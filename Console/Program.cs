@@ -13,35 +13,66 @@ namespace Console
     {
         static void Main(string[] args)
         {
+            //TestCar();
+
+            //TestBrand();
+
+            //TestColor();
+
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            foreach (var carDetail in carManager.GetCarDetails())
+            {
+                System.Console.WriteLine($"{carDetail.CarName} - {carDetail.BrandName} - {carDetail.ColorName} - {carDetail.DailyPrice}");
+            }
+
+        }
+
+        private static void TestColor()
+        {
+            var color = new Color
+            {
+                Id = 2,
+                Name = "BLUE"
+            };
+            var colorManager = new ColorManager(new EfColorDal());
+            colorManager.Update(color);
+        }
+
+        private static void TestBrand()
+        {
+            var brand = new Brand
+            {
+                Id = 2,
+                Name = "NISSAN"
+            };
+
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            brandManager.Update(brand);
+        }
+
+        private static void TestCar()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             var myCarObject = new Car
             {
+                Id = 1,
                 BrandId = 1,
                 ColorId = 1,
                 DailyPrice = 400,
-                Description = "ELECTRIC",
-                ModelYear = 2021
+                Description = "HYBRID",
+                ModelYear = 2020
 
             };
+
             ValidationContext validationContext = new ValidationContext(myCarObject);
             List<ValidationResult> validationResults = new List<ValidationResult>();
             bool valid = Validator.TryValidateObject(myCarObject, validationContext, validationResults, true);
             if (valid)
-                carManager.Add(myCarObject);
+                carManager.Update(myCarObject);
             else
                 foreach (ValidationResult validationResult in validationResults)
                     Debug.WriteLine(validationResult.ErrorMessage);
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }

@@ -1,12 +1,12 @@
-﻿using Entities.Abstract;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities;
 
 namespace Entities.Concrete
 {
-    public class Car:IEntity
+    public class Car : IEntity
     {
         public int Id { get; set; }
         public int BrandId { get; set; }
