@@ -20,12 +20,17 @@ namespace Console
             //TestColor();
 
             CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var carDetail in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success)
             {
-                System.Console.WriteLine($"{carDetail.CarName} - {carDetail.BrandName} - {carDetail.ColorName} - {carDetail.DailyPrice}");
+                foreach (var carDetail in result.Data)
+                {
+                    System.Console.WriteLine($"{carDetail.CarName} - {carDetail.BrandName} - {carDetail.ColorName} - {carDetail.DailyPrice}");
+                    System.Console.WriteLine(result.Message);
+                }
             }
-
+            else
+                System.Console.WriteLine(result.Message);
         }
 
         private static void TestColor()
