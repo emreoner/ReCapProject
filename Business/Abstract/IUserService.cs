@@ -10,7 +10,7 @@ namespace Business.Abstract
     {
         IDataResult<List<User>> GetAll();
 
-        IDataResult<User> GetBrandById(long userId);
+        IDataResult<User> GetUserById(long userId);
 
         IResult Add(User user);
 

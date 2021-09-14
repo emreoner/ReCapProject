@@ -28,5 +28,27 @@ namespace Business.Concrete
             else
                 return new ErrorResult(Messages.CarIsNotAvailable);
         }
+
+        public IResult Delete(Rental rental)
+        {
+            _rentalDal.Delete(rental);
+            return new SuccessResult();
+        }
+
+        public IDataResult<List<Rental>> GetAll()
+        {
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+        }
+
+        public IDataResult<Rental> GetRentalById(long rentalId)
+        {
+            return new SuccessDataResult<Rental>(_rentalDal.GetById(c => c.Id == rentalId));
+        }
+
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Update(rental);
+            return new SuccessResult();
+        }
     }
 }
