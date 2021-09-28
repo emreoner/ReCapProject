@@ -18,21 +18,30 @@ namespace Console
             //TestBrand();
 
             //TestColor();
+            // TestUser();
 
-            CarManager carManager = new CarManager(new EfCarDal());
-            var result = carManager.GetCarDetails();
-            if (result.Success)
-            {
-                foreach (var carDetail in result.Data)
-                {
-                    System.Console.WriteLine($"{carDetail.CarName} - {carDetail.BrandName} - {carDetail.ColorName} - {carDetail.DailyPrice}");
-                    System.Console.WriteLine(result.Message);
-                }
-            }
-            else
-                System.Console.WriteLine(result.Message);
+            //CarManager carManager = new CarManager(new EfCarDal());
+            //var result = carManager.GetCarDetails();
+            //if (result.Success)
+            //{
+            //    foreach (var carDetail in result.Data)
+            //    {
+            //        System.Console.WriteLine($"{carDetail.CarName} - {carDetail.BrandName} - {carDetail.ColorName} - {carDetail.DailyPrice}");
+            //        System.Console.WriteLine(result.Message);
+            //    }
+            //}
+            //else
+            //    System.Console.WriteLine(result.Message);
         }
 
+        private static void TestUser()
+        {
+            var userManager = new UserManager(new EfUserDal());
+            var result = userManager.Add(new User { FirstName = "Emre", LastName = "ONER", Email = "emre@oner.com", Password = "pass" });
+
+            System.Console.WriteLine(result.Message);
+
+        }
         private static void TestColor()
         {
             var color = new Color

@@ -1,1 +1,1 @@
-﻿drop table cars,brands,colors
+﻿drop table cars,brands,colors,users,customers,rentals

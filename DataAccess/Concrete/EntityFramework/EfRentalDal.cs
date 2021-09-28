@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class RentalDal : EfEntityRepositoryBase<Rental, RecapDBContext>, IRentalDal
+    public class EfRentalDal : EfEntityRepositoryBase<Rental, RecapDBContext>, IRentalDal
     {
         public bool CheckIfCarIsAvailable(long carId)
         {

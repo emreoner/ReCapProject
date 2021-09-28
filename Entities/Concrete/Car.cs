@@ -11,7 +11,7 @@ namespace Entities.Concrete
         public long Id { get; set; }
         public long BrandId { get; set; }
         public long ColorId { get; set; }
-        public long ModelYear { get; set; }
+        public int ModelYear { get; set; }
 
         [Range(1, long.MaxValue, ErrorMessage = "DailyPrice should be bigger than 0")]
         public decimal DailyPrice { get; set; }
